@@ -1,0 +1,28 @@
+.nav-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 80px;
+  background-color: cadetblue;
+  margin-bottom: 50px;
+}
+.nav-bar a {
+  text-decoration: none;
+}
+.nav-bar h1 {
+  grid-column: 1/2;
+}
+.nav-bar h1 a {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.nav-bar h3 a {
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+}
+.nav-bar h3 {
+  grid-column: 5/6;
+  border: 2px solid gray;
+  background-color: white;
+  box-shadow: 5px 2px 2px white;
+  text-align: center;
+  border-radius: 5px;
+}
