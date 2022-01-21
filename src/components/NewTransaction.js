@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./NewTransaction.css";
 
 function NewTransaction() {
   const [state, setState] = useState({
@@ -31,6 +32,7 @@ function NewTransaction() {
       <label htmlFor="date">
         <strong>Date</strong>
       </label>
+      <br />
       <input
         type="text"
         name="date"
@@ -39,10 +41,11 @@ function NewTransaction() {
         placeholder="date"
         onChange={handleChange}
       />
-      <br />
+      <hr />
       <label htmlFor="name">
         <strong>Name</strong>
       </label>
+      <br />
       <input
         type="text"
         name="name"
@@ -51,10 +54,11 @@ function NewTransaction() {
         placeholder="name"
         onChange={handleChange}
       />
-      <br />
+      <hr />
       <label htmlFor="amount">
         <strong>Amount</strong>
       </label>
+      <br />
       <input
         type="number"
         name="amount"
@@ -63,10 +67,11 @@ function NewTransaction() {
         placeholder="amount"
         onChange={handleChange}
       />
-      <br />
+      <hr />
       <label htmlFor="update-from">
         <strong>From</strong>
       </label>
+      <br />
       <input
         type="text"
         name="from"
@@ -75,10 +80,11 @@ function NewTransaction() {
         placeholder="From"
         onChange={handleChange}
       />
-      <br />
+      <hr />
       <label htmlFor="category">
         <strong>Category</strong>
       </label>
+      <br />
       <input
         type="text"
         name="category"
@@ -87,11 +93,15 @@ function NewTransaction() {
         placeholder="category"
         onChange={handleChange}
       />
-      <br />
-      <button>
-        <Link to={"/transactions/"}>Cancel</Link>
-      </button>
-      <button type="submit">CREATE A NEW ITEM</button>
+      <hr />
+      <div className="new-buttons">
+        <button id="cancel">
+          <Link to={"/transactions/"}>Cancel</Link>
+        </button>
+        <button id="new-submit" type="submit">
+          CREATE A NEW ITEM
+        </button>
+      </div>
     </form>
   );
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Transaction from "./Transaction";
+import "./Transactions.css";
 
 function Transactions() {
   const [transactions, setTransactions] = useState([]);
@@ -12,7 +13,7 @@ function Transactions() {
       .then((response) => setTransactions(response.data));
   }, []);
   return (
-    <section>
+    <section className="index">
       <Table striped bordered hover>
         <thead>
           <tr>

@@ -1,0 +1,9 @@
+.update-form {
+  width: 85%;
+  margin: 50px auto;
+  background-color: black;
+  color: white;
+}
+#update-submit {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

@@ -1,0 +1,21 @@
+.detail-trans {
+  background-color: blanchedalmond;
+  width: 70%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 50px auto;
+  box-shadow: 10px 5px 5px black;
+}
+.details-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 50%;
+  gap: 5px;
+  background-color: white;
+  margin-top: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.details-buttons button {
+  border-radius: 5px;
+}

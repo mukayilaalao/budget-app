@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import "./UpdateTransaction.css";
 
 function UpdateTransaction() {
   const [state, setState] = useState({
@@ -33,10 +34,11 @@ function UpdateTransaction() {
 
   const { name, date, amount, category, from } = state;
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit} className="update-form">
       <label htmlFor="date">
         <strong>Date</strong>
       </label>
+      <br />
       <input
         type="text"
         name="date"
@@ -45,9 +47,11 @@ function UpdateTransaction() {
         placeholder="date"
         onChange={handleChange}
       />
+      <br />
       <label htmlFor="name">
         <strong>Name</strong>
       </label>
+      <br />
       <input
         type="text"
         name="name"
@@ -56,9 +60,11 @@ function UpdateTransaction() {
         placeholder="name"
         onChange={handleChange}
       />
+      <br />
       <label htmlFor="amount">
         <strong>Amount</strong>
       </label>
+      <br />
       <input
         type="number"
         name="amount"
@@ -67,9 +73,11 @@ function UpdateTransaction() {
         placeholder="amount"
         onChange={handleChange}
       />
+      <br />
       <label htmlFor="update-from">
         <strong>From</strong>
       </label>
+      <br />
       <input
         type="text"
         name="from"
@@ -78,9 +86,11 @@ function UpdateTransaction() {
         placeholder="From"
         onChange={handleChange}
       />
+      <br />
       <label htmlFor="category">
         <strong>Category</strong>
       </label>
+      <br />
       <input
         type="text"
         name="category"
@@ -89,10 +99,13 @@ function UpdateTransaction() {
         placeholder="category"
         onChange={handleChange}
       />
+      <hr />
       <button>
         <Link to={`/transactions/${id}`}>Cancel</Link>
       </button>
-      <button type="submit">UPDATE ITEM</button>
+      <button id="update-submit" type="submit">
+        UPDATE ITEM
+      </button>
     </form>
   );
 }
