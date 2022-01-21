@@ -1,7 +1,7 @@
 import Transactions from "../components/Transactions";
 
-function Index() {
-  return <Transactions />;
+function Index({ getTotal }) {
+  return <Transactions getTotal={getTotal} />;
 }
 
 export default Index;

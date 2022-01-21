@@ -26,3 +26,7 @@
   text-align: center;
   border-radius: 5px;
 }
+#acc-total {
+  grid-column: 2/5;
+  text-align: center;
+}
