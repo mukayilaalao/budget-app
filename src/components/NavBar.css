@@ -30,3 +30,12 @@
   grid-column: 2/5;
   text-align: center;
 }
+.turn-green{
+    background-color:green;
+}
+.turn-yellow{
+    background-color:yellow;
+}
+.turn-red{
+    background-color:red;
+}
