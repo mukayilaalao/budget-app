@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import NewCalendar from "./NewCalendar";
 import "./NewTransaction.css";
@@ -12,12 +12,16 @@ function NewTransaction() {
     from: "",
     category: "",
   });
-
+  const [categories, setCategories]=useState([]);
   const navigate = useNavigate();
   const API_URL = process.env.REACT_APP_API_URL;
-
+useEffect(()=>{
+    axios.get(`${API_URL}/transactions/categories`)
+    .then(response=> setCategories(response.data))
+    .catch(e=> console.log(e));
+},[]);
   const handleChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+    setState({ ...state, [e.target.id]: e.target.value });
   };
   const getDate=date=>{
       setState({...state, date});
@@ -72,14 +76,14 @@ function NewTransaction() {
           onChange={handleChange}
         />
         <hr />
-        <label htmlFor="new-from">
+        <label htmlFor="from">
           <strong>From</strong>
         </label>
         <br />
         <input
           type="text"
           name="from"
-          id="new-from"
+          id="from"
           value={from}
           placeholder="From"
           onChange={handleChange}
@@ -89,14 +93,18 @@ function NewTransaction() {
           <strong>Category</strong>
         </label>
         <br />
-        <input
+        <select id="category" value={category} onChange={handleChange}>
+        <option value="">Please Choose category...</option>
+        {categories.map((category,i)=> <option value={category.toLowerCase()} key={"category"+i}>{category}</option>)}
+        </select>
+        {/* <input
           type="text"
           name="category"
           id="category"
           value={category}
           placeholder="category"
           onChange={handleChange}
-        />
+        /> */}
          <hr />
         <div className="new-buttons">
         <button id="cancel">

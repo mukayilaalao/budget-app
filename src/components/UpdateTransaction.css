@@ -1,7 +1,7 @@
 .update-form {
-  width: 85%;
+  width: 50%;
   margin: 50px auto;
-  background-color: black;
+  background-color: gray;
   color: white;
 }
 #update-submit {
