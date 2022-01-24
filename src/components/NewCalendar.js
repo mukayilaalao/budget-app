@@ -9,7 +9,22 @@ function NewCalendar({getDate}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const formatDate=str=>{
-      return str.match(/[a-z]{3} \d+/i).join("");
+      const monthsObj = {
+    Jan: "January",
+    Feb: "February",
+    Mar: "Mars",
+    Apr: "April",
+    May: "May",
+    Jun: "June",
+    Jul: "Jully",
+    Aug: "August",
+    Sep: "September",
+    Oct: "October",
+    Nov: "November",
+    Dec: "December",
+  };
+    const matchedStr= str.match(/[a-z]{3} \d+/i).join("");
+    return matchedStr.replace(/[a-z]{3}/i, m=> monthsObj[m]);
   }
   useEffect(()=>{
      getDate(formatDate(date.toString()));

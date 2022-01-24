@@ -8,7 +8,7 @@ function Transactions({ getTotal }) {
   const [transactions, setTransactions] = useState([]);
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
-    axios.get(`${API_URL}/transactions`).then((response) => {
+    axios.get(`${API_URL}/transactions?sortBy=date`).then((response) => {
       setTransactions(response.data);
       getTotal(
         response.data.map((el) => Number(el.amount)).reduce((a, b) => a + b, 0)
