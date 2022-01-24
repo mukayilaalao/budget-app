@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import NewCalendar from "./NewCalendar";
 import "./UpdateTransaction.css";
 
 function UpdateTransaction() {
@@ -11,9 +12,16 @@ function UpdateTransaction() {
     from: "",
     category: "",
   });
+  const [categories, setCategories]=useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
   const API_URL = process.env.REACT_APP_API_URL;
+   useEffect(() => {
+    axios
+      .get(`${API_URL}/transactions/categories`)
+      .then((response) => setCategories(response.data))
+      .catch(e => console.log(e));
+  }, []);
   useEffect(() => {
     axios
       .get(`${API_URL}/transactions/${id}`)
@@ -21,8 +29,12 @@ function UpdateTransaction() {
       .catch(() => navigate("/transactions"));
   }, [id]);
   const handleChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+    setState({ ...state, [e.target.id]: e.target.value });
   };
+  //get the date
+  const getDate=date=>{
+      setState({...state, date});
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -34,79 +46,68 @@ function UpdateTransaction() {
 
   const { name, date, amount, category, from } = state;
   return (
-    <form onSubmit={handleSubmit} className="update-form">
-      <label htmlFor="date">
-        <strong>Date</strong>
-      </label>
-      <br />
-      <input
-        type="text"
-        name="date"
-        id="date"
-        value={date}
-        placeholder="date"
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="name">
-        <strong>Name</strong>
-      </label>
-      <br />
-      <input
-        type="text"
-        name="name"
-        id="name"
-        value={name}
-        placeholder="name"
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="amount">
-        <strong>Amount</strong>
-      </label>
-      <br />
-      <input
-        type="number"
-        name="amount"
-        id="amount"
-        value={amount}
-        placeholder="amount"
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="update-from">
-        <strong>From</strong>
-      </label>
-      <br />
-      <input
-        type="text"
-        name="from"
-        id="update-from"
-        value={from}
-        placeholder="From"
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="category">
-        <strong>Category</strong>
-      </label>
-      <br />
-      <input
-        type="text"
-        name="category"
-        id="category"
-        value={category}
-        placeholder="category"
-        onChange={handleChange}
-      />
-      <hr />
-      <button>
-        <Link to={`/transactions/${id}`}>Cancel</Link>
-      </button>
-      <button id="update-submit" type="submit">
-        UPDATE ITEM
-      </button>
-    </form>
+      <div className="update-form">
+        <NewCalendar getDate={getDate}/>
+        <form onSubmit={handleSubmit} >
+        
+        <br />
+        <label htmlFor="name">
+            <strong>Name</strong>
+        </label>
+        <br />
+        <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            placeholder="name"
+            onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="amount">
+            <strong>Amount</strong>
+        </label>
+        <br />
+        <input
+            type="number"
+            name="amount"
+            id="amount"
+            value={amount}
+            placeholder="amount"
+            onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="from">
+            <strong>From</strong>
+        </label>
+        <br />
+        <input
+            type="text"
+            name="from"
+            id="from"
+            value={from}
+            placeholder="From"
+            onChange={handleChange}
+        />
+        <br />
+        <label htmlFor="category">
+            <strong>Category</strong>
+        </label>
+        <br />
+        <select id="category" value={category} onChange={handleChange}>
+            <option value="">Please Choose category...</option>
+            {categories.map((category,i)=> <option value={category.toLowerCase()} key={"category"+i}>{category}</option>)}
+            </select>
+        
+        <hr />
+        <button>
+            <Link to={`/transactions/${id}`}>Cancel</Link>
+        </button>
+        <button id="update-submit" type="submit">
+            UPDATE ITEM
+        </button>
+        </form>
+    </div>
   );
 }
 

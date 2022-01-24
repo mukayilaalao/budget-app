@@ -41,14 +41,6 @@ useEffect(()=>{
       <NewCalendar getDate={getDate}/>
       <form onSubmit={handleSubmit}>
         <br />
-        {/* <input
-        type="text"
-        name="date"
-        id="date"
-        value={date}
-        placeholder="date"
-        onChange={handleChange}
-      /> */}
         <hr />
         <label htmlFor="name">
           <strong>Name</strong>
@@ -97,14 +89,6 @@ useEffect(()=>{
         <option value="">Please Choose category...</option>
         {categories.map((category,i)=> <option value={category.toLowerCase()} key={"category"+i}>{category}</option>)}
         </select>
-        {/* <input
-          type="text"
-          name="category"
-          id="category"
-          value={category}
-          placeholder="category"
-          onChange={handleChange}
-        /> */}
          <hr />
         <div className="new-buttons">
         <button id="cancel">
