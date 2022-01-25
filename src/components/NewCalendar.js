@@ -23,8 +23,9 @@ function NewCalendar({getDate}) {
     Nov: "November",
     Dec: "December",
   };
-    const matchedStr= str.match(/[a-z]{3} \d+/i).join("");
-    return matchedStr.replace(/[a-z]{3}/i, m=> monthsObj[m]);
+    let matchedStr= str.match(/[a-z]{3} \d+/i).join("");
+    matchedStr=matchedStr.replace(/[a-z]{3}/i, m=> monthsObj[m]);
+    return matchedStr.replace(/[0-9]{2}/i, m=> Number(m));
   }
   useEffect(()=>{
      getDate(formatDate(date.toString()));

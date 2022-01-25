@@ -41,3 +41,17 @@
 .turn-red{
     background-color:red;
 }
+@media screen and (max-width: 915px) {
+    .nav-bar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);   
+      }
+      .nav-bar h1 a {
+        color: black;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size:15px;
+    }
+    #acc-total {
+        font-size:15px;
+      }
+  }
